@@ -1,0 +1,83 @@
+
+<div id="readroot" style="display: none" name="div1">
+
+	<input type="button" value="Remove Command"
+		onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
+
+	<select name="command" onchange = "menu(this);">
+        <option>Command</option>
+        <option value="takeoff">Takeoff</option>
+        <option value="land">Land</option>
+        <option value="alt">Altitude</option>
+        <option value="wp">Waypoint</option>
+        <option value="rtl">RTL</option>
+    </select>
+
+    <input name="val1." type="number" placeholder="Latitude" style="display: none">
+    <input name="val2." type="number" placeholder="Longitude" style="display: none">
+
+</div>
+<script type="text/javascript">
+    var counter = 0;
+    function moreFields() {
+	counter++;
+    console.log(counter);
+	var newFields = document.getElementById('readroot').cloneNode(true);
+	newFields.id = counter;
+	newFields.style.display = 'block';
+	var newField = newFields.childNodes;
+	for (var i=0;i<newField.length;i++) {
+		var theName = newField[i].name
+		if (theName)
+			newField[i].name = theName + counter;
+	}
+	var insertHere = document.getElementById('writeroot');
+	insertHere.parentNode.insertBefore(newFields,insertHere);
+}
+function menu(selectelement){
+
+            if(selectelement.options[selectelement.selectedIndex].value == "takeoff" || selectelement.options[selectelement.selectedIndex].value == "wp" || selectelement.options[selectelement.selectedIndex].value == "rtl"){
+                selectelement.parentNode.childNodes[7].style.display = "inline";
+                selectelement.parentNode.childNodes[7].placeholder = "Latitude";
+                selectelement.parentNode.childNodes[9].style.display = "inline";
+                selectelement.parentNode.childNodes[9].placeholder = "Longitude";
+            }
+            if(selectelement.options[selectelement.selectedIndex].value == "alt"){
+                selectelement.parentNode.childNodes[7].style.display = "inline";
+                selectelement.parentNode.childNodes[7].placeholder = "meters";
+                selectelement.parentNode.childNodes[9].style.display = "none";
+            }
+            if(selectelement.options[selectelement.selectedIndex].value == "land"){
+                console.log(selectelement.parentNode.childNodes[7].name);
+                console.log(selectelement.parentNode.childNodes[9].name);
+                selectelement.parentNode.childNodes[7].style.display = "none";
+                selectelement.parentNode.childNodes[9].style.display = "none";
+            }
+            }
+    window.onload = moreFields;
+</script>
+
+<form method="post">
+
+	<span id="writeroot"></span>
+
+	<input type="button" id="more" value="Add Command" onclick="moreFields()">
+	<input type="button" value="Upload Mission" onclick="submitdata()"/>
+
+</form>
+<script type="text/javascript">
+    function submitdata (){
+            var commandlist = [];
+            for(var i=1 ; i<=counter ; i++){
+                var command = document.getElementById(i);
+                var command_vals = command.childNodes;
+                var usabledata = {};
+                usabledata.type = command_vals[5].options[command_vals[5].selectedIndex].value;
+                usabledata.value1 = command_vals[7].value;
+                usabledata.value2 = command_vals[9].value;
+                commandlist.push(usabledata);
+            }
+            console.log(commandlist);
+        }
+</script>
+</body>

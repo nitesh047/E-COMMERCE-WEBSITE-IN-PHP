@@ -1,0 +1,133 @@
+*{
+box-sizing: border-box;
+margin: 0px;
+padding: 0px;
+}
+li, a, button{
+  font-family:"montserrat",sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+}
+.logo{
+  cursor: pointer;
+  height: 100%;
+  width: 130px;
+
+}
+.nav_links{
+  list-style: none;
+}
+.nav_links{
+  display: inline-block;
+  padding: 0px 20px;
+}
+.nav_links li{
+  display: inline-block;
+  padding: 10px;
+}
+button{
+  padding: 9px 25px;
+  background-color: rgba(0,136,169,1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+button:hover{
+  background-color: blue;
+
+}
+.nav_link {
+  list-style: none;
+  padding: 0px;
+}
+.nav_link button{
+  background: black;
+
+}
+.nav_link button a{
+  font-size: 12px;
+  padding: 0px;
+  color: #fff;
+}
+.nav_link button:hover{
+  background-color: pink;
+}
+
+section{
+  width: 64%;
+  float: right;
+
+
+}
+.right{
+  width: 36%;
+  float: right;
+  padding-bottom: 10px;
+
+
+}
+.right li{
+  padding: 5px;
+}
+.right li ul{
+  background-color: #fff;
+}
+.right li ul li{
+  float: none;
+}
+.right li ul{
+  display: none;
+}
+.right li:hover ul{
+  display: block;
+}
+.main h2{
+  color: blue;
+}
+section button{
+  background-color: red;
+  float: right;
+}
+.nav_link li ul{
+  background-color: #fff;
+}
+.nav_link li ul li{
+  float: none;
+  list-style: none;
+}
+.nav_link li ul{
+  display: none;
+}
+.nav_link li:hover ul{
+  display: block;
+}
+
+
+.main::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+table{
+  border: 1px solid;
+  width: 100;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+th,td{
+  padding: 8px;
+  border: 1px solid #a4a4a4;
+  height:30px;
+}
+th{
+  text-align:left;
+  background-color: grey;
+}
